@@ -6,6 +6,7 @@ import {NgRedux, NgReduxModule} from 'ng2-redux';
 
 import {AppComponent} from './app.component';
 import {IAppState, rootReducer, INITIAL_STATE} from "./store";
+import { fromJS, Map} from 'immutable';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import {IAppState, rootReducer, INITIAL_STATE} from "./store";
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor(ngRedux: NgRedux<IAppState>) {
-        ngRedux.configureStore(rootReducer, INITIAL_STATE);
+    constructor(ngRedux: NgRedux<Map<string, any>>) {
+        ngRedux.configureStore(rootReducer, fromJS(INITIAL_STATE) );
     }
 }
